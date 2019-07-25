@@ -1,15 +1,11 @@
 const express = require('express');
 const app = express();
 
-app.get('/', (req, res) => {
-  let obj = req.query;
+const indexRoute = require ('./Routes/index');
+const usersRoute = require ('./Routes/users');
 
-  return res.send({message: `Tudo OK com o método GET! Você enviou o nome ${obj.nome} com idade de ${obj.idade} anos`});
-});
-
-app.post('/', (req, res) => {
-  return res.send({message: 'Tudo OK com o método POST'});
-});
+app.use('/', indexRoute);
+app.use('/users', usersRoute);
 
 app.listen(3000);
 
